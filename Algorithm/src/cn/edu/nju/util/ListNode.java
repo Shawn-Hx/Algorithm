@@ -3,19 +3,19 @@ package cn.edu.nju.util;
 /**
  * 单链表节点
  */
-public class Node {
+public class ListNode {
     public int val;
-    public Node next;
+    public ListNode next;
 
-    public Node(int val) {
+    public ListNode(int val) {
         this.val = val;
     }
 
-    public Node(int... values) {
+    public ListNode(int... values) {
         this(values[0]);
-        Node p = this;
+        ListNode p = this;
         for (int i = 1; i < values.length; i++) {
-            p.next = new Node(values[i]);
+            p.next = new ListNode(values[i]);
             p = p.next;
         }
     }
@@ -24,7 +24,7 @@ public class Node {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(val);
-        Node p = next;
+        ListNode p = next;
         while (p != null) {
             sb.append(" -> ");
             sb.append(p.val);
