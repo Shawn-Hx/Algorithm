@@ -2,29 +2,38 @@ package cn.edu.nju.sort;
 
 public class QuickSort implements Sort {
 
-    private int partition(int[] arr, int left, int right) {
-        int i = left, j = right + 1;
+    /**
+     * Partition算法1
+     */
+    private int partition(int[] arr, int l, int r) {
+        int i = l, j = r + 1;
         while (true) {
-            while (arr[++i] < arr[left] && i < right);
-            while (arr[--j] > arr[left] && j > left);
+            while (arr[++i] < arr[l] && i < r);
+            while (arr[--j] >= arr[l] && j > l);
             if (i >= j)
                 break;
             swap(arr, i, j);
         }
-        swap(arr, left, j);
+        swap(arr, l, j);
         return j;
     }
 
-//    private int partition(int[] arr, int left, int right) {
-//        int pivot = arr[left];
-//        while (left < right) {
-//            while (left < right && arr[right] >= pivot) right--;
-//            arr[left] = arr[right];
-//            while (left < right && arr[left] <= pivot) left++;
-//            arr[right] = arr[left];
+    /**
+     * Partition算法2，不用swap函数
+     */
+//    private int partition(int[] arr, int l, int r) {
+//        int pivot = arr[l];
+//        while (l < r) {
+//            // 此处为大于等于，发现小于基准时放到左边
+//            while (l < r && arr[r] >= pivot) r--;
+//            arr[l++] = arr[r];
+//            // 此处为小于，大于等于基准时放到右边
+//            while (l < r && arr[l] < pivot) l++;
+//            arr[r--] = arr[l];
 //        }
-//        arr[left] = pivot;
-//        return left;
+//        // 退出循环时，i、j相等，将此位置填入基准
+//        arr[l] = pivot;
+//        return l;
 //    }
 
     private void sort(int[] arr, int left, int right) {
