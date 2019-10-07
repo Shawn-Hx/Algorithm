@@ -1,6 +1,5 @@
 package cn.edu.nju.sort;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Test {
@@ -17,26 +16,20 @@ public class Test {
         return arr;
     }
 
-    private static void testSort(Sort sort) {
-        int[] arr = generateRandomArray();
-        sort.sort(arr);
-        Arrays.stream(arr).forEach(e -> System.out.print(e + " "));
-    }
-
     private static long computeTime(int[] arr, Sort sort) {
-        long begin = System.currentTimeMillis();
+        long begin = System.nanoTime();
         sort.sort(arr);
-        return System.currentTimeMillis() - begin;
+        return System.nanoTime() - begin;
     }
 
     public static void main(String[] args) {
         int[] arr = generateRandomArray(1 << 16, 1 << 20);
-        System.out.println("快速排序：\t" + computeTime(arr, new QuickSort()));
+        System.out.println("Quick sort:\t\t" + computeTime(arr, new QuickSort()));
         arr = generateRandomArray(1 << 16, 1 << 20);
-        System.out.println("堆排序：\t\t" + computeTime(arr, new HeapSort()));
+        System.out.println("Heap sort:\t\t" + computeTime(arr, new HeapSort()));
         arr = generateRandomArray(1 << 16, 1 << 20);
-        System.out.println("归并排序：\t" + computeTime(arr, new MergeSort()));
+        System.out.println("Merge sort:\t\t" + computeTime(arr, new MergeSort()));
         arr = generateRandomArray(1 << 16, 1 << 20);
-        System.out.println("插入排序：\t" + computeTime(arr, new InsertionSort()));
+        System.out.println("Insertion sort:\t" + computeTime(arr, new InsertionSort()));
     }
 }

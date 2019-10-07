@@ -1,2 +1,3 @@
 # Algorithm
-Common algorithms reference implementation, including LeetCode problems.
+
+Common algorithms implementation for reference, including LeetCode algorithm problems.
