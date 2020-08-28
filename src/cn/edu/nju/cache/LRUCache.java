@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * LeetCode 146
  *
  */
-public class LRUCache {
+public class LRUCache implements Cache {
 
     private final int capacity;
     private final Map<Integer, ListNode> nodeMap;
@@ -26,7 +26,8 @@ public class LRUCache {
         tail.pre = head;
     }
 
-    public int get(Integer key) {
+    @Override
+    public int get(int key) {
         int res = -1;
         if (nodeMap.containsKey(key)) {
             ListNode node = nodeMap.get(key);
@@ -36,6 +37,7 @@ public class LRUCache {
         return res;
     }
 
+    @Override
     public void put(int key, int value) {
         if (nodeMap.containsKey(key)) {
             ListNode node = nodeMap.get(key);
@@ -58,12 +60,10 @@ public class LRUCache {
     private static class ListNode {
         Integer key;
         Integer value;
-
         ListNode pre;
         ListNode next;
 
         ListNode() {}
-
         ListNode(Integer key, Integer value) {
             this.key = key;
             this.value = value;

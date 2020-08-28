@@ -8,8 +8,8 @@ public class Test {
         return generateRandomArray(32, 128);
     }
 
-    private static int[] generateRandomArray(int number, int range) {
-        int[] arr = new int[number];
+    private static int[] generateRandomArray(int length, int range) {
+        int[] arr = new int[length];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = new Random().nextInt(range);
         }

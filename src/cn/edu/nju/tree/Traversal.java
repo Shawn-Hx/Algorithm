@@ -5,7 +5,7 @@ import cn.edu.nju.util.TreeNode;
 import java.util.*;
 
 /**
- * 数的遍历（非递归实现）
+ * 树的遍历（非递归实现）
  */
 public class Traversal {
 
