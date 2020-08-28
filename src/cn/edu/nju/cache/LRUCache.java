@@ -5,16 +5,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
- *
  * LeetCode 146
- *
  */
 public class LRUCache implements Cache {
 
     private final int capacity;
     private final Map<Integer, ListNode> nodeMap;
-    private ListNode head;
-    private ListNode tail;
+    private final ListNode head;
+    private final ListNode tail;
 
     public LRUCache(int capacity) {
         this.capacity = capacity;
@@ -23,7 +21,7 @@ public class LRUCache implements Cache {
         this.head = new ListNode();
         this.tail = new ListNode();
         head.next = tail;
-        tail.pre = head;
+        tail.prev = head;
     }
 
     @Override
@@ -58,13 +56,10 @@ public class LRUCache implements Cache {
      * 双向链表节点
      */
     private static class ListNode {
-        Integer key;
-        Integer value;
-        ListNode pre;
-        ListNode next;
-
+        int key, value;
+        ListNode prev, next;
         ListNode() {}
-        ListNode(Integer key, Integer value) {
+        ListNode(int key, int value) {
             this.key = key;
             this.value = value;
         }
@@ -74,10 +69,10 @@ public class LRUCache implements Cache {
      * 删除双向链表中节点
      */
     private void removeNode(ListNode node) {
-        ListNode pre = node.pre;
+        ListNode pre = node.prev;
         ListNode next = node.next;
         pre.next = next;
-        next.pre = pre;
+        next.prev = pre;
     }
 
     /**
@@ -93,16 +88,16 @@ public class LRUCache implements Cache {
      */
     private void addToFront(ListNode node) {
         node.next = head.next;
-        head.next.pre = node;
+        head.next.prev = node;
         head.next = node;
-        node.pre = head;
+        node.prev = head;
     }
 
     /**
      * 删除双向链表尾部节点
      */
     private ListNode pop() {
-        ListNode last = tail.pre;
+        ListNode last = tail.prev;
         removeNode(last);
         return last;
     }
