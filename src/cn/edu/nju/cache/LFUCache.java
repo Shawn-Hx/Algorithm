@@ -10,84 +10,14 @@ public class LFUCache implements Cache {
 
     private final int capacity;
     private int minFreq;
-    private final Map<Integer, ListNode> freqHeadMap;
-    private final Map<Integer, ListNode> freqTailMap;
     private final Map<Integer, ListNode> nodeMap;
-
-    private static class ListNode {
-        int key, value;
-        int freq;
-        ListNode prev, next;
-        ListNode(int key, int value) {
-            this.key = key;
-            this.value = value;
-            this.freq = 1;
-        }
-
-        @Override
-        public String toString() {
-            ListNode p = next;
-            StringBuilder sb = new StringBuilder();
-            sb.append('(').append(key).append(',').append(value).append(')');
-            while (p != null) {
-                sb.append("<->").append('(').append(p.key).append(',').append(p.value).append(')');
-                p = p.next;
-            }
-            return sb.toString();
-        }
-    }
-
-    private void remove(ListNode node) {
-        int freq = node.freq;
-        ListNode prev = node.prev;
-        ListNode next = node.next;
-        node.prev = null;
-        node.next = null;
-        if (prev == null && next == null) {
-            freqHeadMap.remove(freq);
-            freqTailMap.remove(freq);
-            return;
-        }
-        if (prev == null)
-            freqHeadMap.put(freq, next);
-        else
-            prev.next = next;
-        if (next == null)
-            freqTailMap.put(freq, prev);
-        else
-            next.prev = prev;
-    }
-
-    private void insertFirst(int freq, ListNode node) {
-        ListNode head = freqHeadMap.get(freq);
-        if (head != null) {
-            node.next = head;
-            head.prev = node;
-        } else {
-            freqTailMap.put(freq, node);
-        }
-        freqHeadMap.put(freq, node);
-    }
-
-    private ListNode removeLast(int freq) {
-        ListNode tail = freqTailMap.get(freq);
-        ListNode prev = tail.prev;
-        if (prev == null) {
-            freqHeadMap.remove(freq);
-            freqTailMap.remove(freq);
-        } else {
-            prev.next = null;
-            freqTailMap.put(freq, prev);
-        }
-        return tail;
-    }
+    private final Map<Integer, DoubleLinkedList> freqMap;
 
     public LFUCache(int capacity) {
         this.capacity = capacity;
         this.minFreq = 0;
-        this.freqHeadMap = new HashMap<>();
-        this.freqTailMap = new HashMap<>();
         this.nodeMap = new HashMap<>();
+        this.freqMap = new HashMap<>();
     }
 
     @Override
@@ -95,31 +25,95 @@ public class LFUCache implements Cache {
         ListNode node = nodeMap.get(key);
         if (node == null)
             return -1;
-        remove(node);
-        if (minFreq == node.freq && !freqHeadMap.containsKey(node.freq))
+        DoubleLinkedList list = freqMap.get(node.freq);
+        list.remove(node);
+        if (minFreq == node.freq && list.isEmpty())
             minFreq++;
         node.freq++;
-        insertFirst(node.freq, node);
+        list = freqMap.getOrDefault(node.freq, new DoubleLinkedList());
+        list.insertFirst(node);
+        freqMap.putIfAbsent(node.freq, list);
         return node.value;
     }
 
     @Override
     public void put(int key, int value) {
+        if (capacity == 0)
+            return;
         ListNode node = nodeMap.get(key);
         if (node != null) {
             node.value = value;
             get(key);
             return;
         }
-        if (capacity == 0)
-            return;
         node = new ListNode(key, value);
         nodeMap.put(key, node);
         if (nodeMap.size() > capacity) {
-            ListNode last = removeLast(minFreq);
+            ListNode last = freqMap.get(minFreq).removeLast();
             nodeMap.remove(last.key);
         }
         minFreq = 1;
-        insertFirst(1, node);
+        DoubleLinkedList list = freqMap.getOrDefault(1, new DoubleLinkedList());
+        list.insertFirst(node);
+        freqMap.putIfAbsent(1, list);
     }
+
+    private static class ListNode {
+        int key, value;
+        int freq;
+        ListNode prev, next;
+        ListNode() {}
+        ListNode(int key, int value) {
+            this.key = key;
+            this.value = value;
+            this.freq = 1;
+        }
+    }
+
+    private static class DoubleLinkedList {
+        ListNode head, tail;
+
+        DoubleLinkedList() {
+            head = new ListNode();
+            tail = new ListNode();
+            head.next = tail;
+            tail.prev = head;
+        }
+
+        boolean isEmpty() { return head.next == tail; }
+
+        ListNode remove(ListNode node) {
+            node.prev.next = node.next;
+            node.next.prev = node.prev;
+            node.prev = node.next = null;
+            return node;
+        }
+
+        void insertFirst(ListNode node) {
+            node.next = head.next;
+            node.prev = head;
+            head.next.prev = node;
+            head.next = node;
+        }
+
+        ListNode removeLast() {
+            return remove(tail.prev);
+        }
+    }
+
+    public static void main(String[] args) {
+        // LeetCode Test case
+        Cache cache = new LFUCache(2);
+        cache.put(1, 1);
+        cache.put(2, 2);
+        cache.get(1);       // returns 1
+        cache.put(3, 3);    // evicts key 2
+        cache.get(2);       // returns -1 (not found)
+        cache.get(3);       // returns 3.
+        cache.put(4, 4);    // evicts key 1.
+        cache.get(1);       // returns -1 (not found)
+        cache.get(3);       // returns 3
+        cache.get(4);       // returns 4
+    }
+
 }
