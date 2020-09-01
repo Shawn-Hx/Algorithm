@@ -20,6 +20,7 @@ Common algorithms implementation for reference, including LeetCode algorithm pro
         - without recursion
 - Random
     - [Randomized Set](https://leetcode-cn.com/problems/insert-delete-getrandom-o1/)
+    - [Randomized Collection](https://leetcode-cn.com/problems/insert-delete-getrandom-o1-duplicates-allowed/)
 - Cache
     - [LRU cache](https://leetcode-cn.com/problems/lru-cache/)
     - [LFU cache](https://leetcode-cn.com/problems/lfu-cache/)
