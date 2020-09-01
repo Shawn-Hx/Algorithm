@@ -18,6 +18,8 @@ Common algorithms implementation for reference, including LeetCode algorithm pro
     - Traversal
         - with recursion
         - without recursion
+- Random
+    - [Randomized Set](https://leetcode-cn.com/problems/insert-delete-getrandom-o1/)
 - Cache
     - [LRU cache](https://leetcode-cn.com/problems/lru-cache/)
     - [LFU cache](https://leetcode-cn.com/problems/lfu-cache/)
