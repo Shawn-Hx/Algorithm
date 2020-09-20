@@ -1,7 +1,6 @@
 package cn.edu.nju.dp;
 
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * LeetCode 300. Longest Increasing Subsequence

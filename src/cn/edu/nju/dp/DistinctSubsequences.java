@@ -37,7 +37,8 @@ public class DistinctSubsequences {
     }
 
     public static void main(String[] args) {
-        new DistinctSubsequences().numDistinct("babgbag", "bag");
+        int res = new DistinctSubsequences().numDistinct("babgbag", "bag");
+        System.out.println(res);
     }
 
 }

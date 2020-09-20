@@ -3,7 +3,7 @@ package cn.edu.nju.linkedlist;
 import cn.edu.nju.util.ListNode;
 
 /**
- * 翻转单链表
+ * LeetCode 206. Reverse Linked list
  */
 public class Reverse {
 
