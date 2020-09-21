@@ -1,4 +1,4 @@
-package cn.edu.nju.util;
+package cn.edu.nju.linkedlist;
 
 /**
  * 单链表节点

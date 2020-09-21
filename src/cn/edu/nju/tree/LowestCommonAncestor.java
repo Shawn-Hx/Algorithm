@@ -1,7 +1,5 @@
 package cn.edu.nju.tree;
 
-import cn.edu.nju.util.TreeNode;
-
 /**
  * LeetCode 236. Lowest Common Ancestor of a Binary Tree
  */

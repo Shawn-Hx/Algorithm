@@ -3,45 +3,37 @@ package cn.edu.nju.unionfind;
 public class UF {
 
     private int count;
-    private final int[] parent;
+    private final int[] fa;
     private final int[] size;
 
     public UF(int n) {
         this.count = n;
-        this.parent = new int[n];
+        this.fa = new int[n];
         this.size = new int[n];
         for (int i = 0; i < n; i++) {
-            parent[i] = i;
+            fa[i] = i;
             size[i] = 1;
         }
     }
 
     public int find(int x) {
-        if (x != parent[x])
-            parent[x] = find(x);
-        return parent[x];
+        return x == fa[x] ? x : (fa[x] = find(fa[x]));
     }
 
-    public void union(int p, int q) {
-        int rootP = find(p);
-        int rootQ = find(q);
-        if (rootP == rootQ)
+    public void union(int x, int y) {
+        int xx = find(x);
+        int yy = find(y);
+        if (xx == yy)
             return;
         // union by rank
-        if (size[rootP] > size[rootQ]) {
-            parent[rootQ] = rootP;
-            size[rootP] += size[rootQ];
+        if (size[xx] > size[yy]) {
+            fa[yy] = xx;
+            size[xx] += size[yy];
         } else {
-            parent[rootP] = rootQ;
-            size[rootQ] += size[rootP];
+            fa[xx] = yy;
+            size[yy] += size[xx];
         }
         count--;
-    }
-
-    public boolean connected(int p, int q) {
-        int rootP = find(p);
-        int rootQ = find(q);
-        return rootP == rootQ;
     }
 
     public int count() {

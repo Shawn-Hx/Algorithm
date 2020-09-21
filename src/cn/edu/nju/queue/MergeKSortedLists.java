@@ -1,6 +1,6 @@
 package cn.edu.nju.queue;
 
-import cn.edu.nju.util.ListNode;
+import cn.edu.nju.linkedlist.ListNode;
 
 import java.util.Arrays;
 import java.util.Comparator;

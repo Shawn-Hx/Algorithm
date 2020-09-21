@@ -1,7 +1,5 @@
 package cn.edu.nju.linkedlist;
 
-import cn.edu.nju.util.ListNode;
-
 /**
  * LeetCode 206. Reverse Linked list
  */

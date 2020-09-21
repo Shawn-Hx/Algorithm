@@ -1,7 +1,5 @@
 package cn.edu.nju.tree;
 
-import cn.edu.nju.util.TreeNode;
-
 import java.util.*;
 
 /**

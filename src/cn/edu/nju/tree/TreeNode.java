@@ -1,4 +1,4 @@
-package cn.edu.nju.util;
+package cn.edu.nju.tree;
 
 public class TreeNode {
     public int val;
