@@ -19,28 +19,25 @@ public class BinarySearch {
         return -1;
     }
 
-    /**
-     * 二分查找变体，若存在重复元素，返回最右边元素下标
-     */
-    public static int searchRight(int[] arr, int key) {
-        int i = 0, j = arr.length - 1;
-        while (i < j) {
-            int mid = i + ((j - i + 1) >> 1);   // 此处必须有 + 1，目的是当i，j相邻时让mid指向j位置
-            if (arr[mid] > key)
-                j = mid - 1;
-            else if (arr[mid] < key)
-                i = mid + 1;
-            else
-                i = mid;
+    public static int lowerBound(int[] arr, int key) {
+        int l = -1, r = arr.length;
+        while (r - l > 1) {
+            int mid = l + (r - l >> 1);
+            if (arr[mid] >= key) {
+                r = mid;
+            } else {
+                l = mid;
+            }
         }
-        if (arr[i] == key) {
-            return i;
-        }
-        return -1;
+        return r;
+    }
+
+    public static int upperBound(int[] arr, int key) {
+        return 0;
     }
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 2, 2, 3, 3, 4, 5, 6, 8, 10, 11};
-        System.out.println(searchRight(arr, 2));
+        System.out.println(lowerBound(arr, 1));
     }
 }
