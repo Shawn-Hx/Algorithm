@@ -5,6 +5,9 @@ Common algorithms implementation for reference, including LeetCode algorithm pro
 **Current algorithms**
 
 - Binary search
+    - Standard
+    - Lower bound
+    - Upper bound
 - Sort
     - Counting sort
     - Heap sort

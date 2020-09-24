@@ -6,15 +6,15 @@ public class BinarySearch {
      * 标准二分查找
      */
     public static int binarySearch(int[] arr, int key) {
-        int i = 0, j = arr.length - 1;
-        while (i <= j) {
-            int mid = i + ((j - i) >> 1);
+        int l = 0, r = arr.length - 1;
+        while (l <= r) {
+            int mid = l + (r - l >> 1);
             if (arr[mid] == key)
                 return mid;
             if (arr[mid] > key)
-                j = mid - 1;
+                r = mid - 1;
             else
-                i = mid + 1;
+                l = mid + 1;
         }
         return -1;
     }
@@ -33,11 +33,16 @@ public class BinarySearch {
     }
 
     public static int upperBound(int[] arr, int key) {
-        return 0;
+        int l = -1, r = arr.length;
+        while (r - l > 1) {
+            int mid = l + (r - l >> 1);
+            if (arr[mid] <= key) {
+                l = mid;
+            } else {
+                r = mid;
+            }
+        }
+        return r;
     }
-
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 2, 2, 3, 3, 4, 5, 6, 8, 10, 11};
-        System.out.println(lowerBound(arr, 1));
-    }
+    
 }
