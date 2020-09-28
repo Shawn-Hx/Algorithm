@@ -17,6 +17,7 @@ Common algorithms implementation for reference, including LeetCode algorithm pro
     - Radix sort
 - Linked list
     - [Reverse Linked List](https://leetcode-cn.com/problems/reverse-linked-list/)
+    - [Detect Cycle](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
 - Binary Tree
     - Traversal
         - with recursion
