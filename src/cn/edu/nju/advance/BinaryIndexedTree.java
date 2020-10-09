@@ -14,7 +14,7 @@ public class BinaryIndexedTree {
     }
 
     private int lowbit(int x) {
-        return x & (-x);
+        return x & -x;
     }
 
     // i: [1, n]

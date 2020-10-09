@@ -31,22 +31,39 @@ public class Traversal {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode curr = root;
-        while (curr != null || !stack.empty()) {
-            while (curr != null) {
-                stack.push(curr);
-                curr = curr.left;
+        TreeNode cur = root;
+        while (cur != null || !stack.empty()) {
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.left;
             }
-            curr = stack.pop();
-            res.add(curr.val);
-            curr = curr.right;
+            cur = stack.pop();
+            res.add(cur.val);
+            cur = cur.right;
         }
         return res;
     }
 
     public List<Integer> postorderTraversal(TreeNode root) {
-        // TODO
-        return null;
+        List<Integer> res = new ArrayList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode prev = null;
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (root.right == null || root.right == prev) {
+                res.add(root.val);
+                prev = root;
+                root = null;
+            } else {
+                stack.push(root);
+                root = root.right;
+            }
+        }
+        return res;
     }
 
     public static void main(String[] args) {
