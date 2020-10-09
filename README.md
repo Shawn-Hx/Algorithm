@@ -15,9 +15,11 @@ Common algorithms implementation for reference, including LeetCode algorithm pro
     - Merge sort
     - Quick sort
     - Radix sort
-- Linked list
+- Linked List
     - [Reverse Linked List](https://leetcode-cn.com/problems/reverse-linked-list/)
     - [Detect Cycle](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
+- Two Pointers
+    - [Maximum Number of Visible Points](https://leetcode-cn.com/problems/maximum-number-of-visible-points/)
 - Binary Tree
     - Traversal
         - with recursion
@@ -27,8 +29,8 @@ Common algorithms implementation for reference, including LeetCode algorithm pro
     - [Randomized Set](https://leetcode-cn.com/problems/insert-delete-getrandom-o1/)
     - [Randomized Collection](https://leetcode-cn.com/problems/insert-delete-getrandom-o1-duplicates-allowed/)
 - Cache
-    - [LRU cache](https://leetcode-cn.com/problems/lru-cache/)
-    - [LFU cache](https://leetcode-cn.com/problems/lfu-cache/)
+    - [LRU Cache](https://leetcode-cn.com/problems/lru-cache/)
+    - [LFU Cache](https://leetcode-cn.com/problems/lfu-cache/)
 - Dynamic Programing
     - [Longest Valid Parentheses](https://leetcode-cn.com/problems/longest-valid-parentheses/)
     - [Interleaving String](https://leetcode-cn.com/problems/interleaving-string/)
