@@ -28,9 +28,6 @@ Common algorithms implementation for reference, including LeetCode algorithm pro
 - Random
     - [Randomized Set](https://leetcode-cn.com/problems/insert-delete-getrandom-o1/)
     - [Randomized Collection](https://leetcode-cn.com/problems/insert-delete-getrandom-o1-duplicates-allowed/)
-- Cache
-    - [LRU Cache](https://leetcode-cn.com/problems/lru-cache/)
-    - [LFU Cache](https://leetcode-cn.com/problems/lfu-cache/)
 - Dynamic Programing
     - [Longest Valid Parentheses](https://leetcode-cn.com/problems/longest-valid-parentheses/)
     - [Interleaving String](https://leetcode-cn.com/problems/interleaving-string/)
@@ -38,3 +35,6 @@ Common algorithms implementation for reference, including LeetCode algorithm pro
     - [Longest Increasing Subsequence](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
 - Design
     - [Design Twitter](https://leetcode-cn.com/problems/design-twitter/)
+    - Cache
+        - [LRU Cache](https://leetcode-cn.com/problems/lru-cache/)
+        - [LFU Cache](https://leetcode-cn.com/problems/lfu-cache/)

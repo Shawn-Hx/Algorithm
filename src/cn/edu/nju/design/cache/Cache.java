@@ -1,4 +1,4 @@
-package cn.edu.nju.cache;
+package cn.edu.nju.design.cache;
 
 public interface Cache {
 
