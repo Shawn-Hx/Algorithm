@@ -24,6 +24,7 @@ Common algorithms implementation for reference, including LeetCode algorithm pro
     - Traversal
         - with recursion
         - without recursion
+    - [Diameter of Binary Tree](https://leetcode-cn.com/problems/diameter-of-binary-tree/)
     - [Lowest Common Ancestor](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/)
 - Graph
     - Minimum Spanning Tree
