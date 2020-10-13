@@ -28,6 +28,9 @@ Common algorithms implementation for reference, including LeetCode algorithm pro
     - [Lowest Common Ancestor](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/)
 - Graph
     - Minimum Spanning Tree
+        - [Min Cost to Connect All Points](https://leetcode-cn.com/problems/min-cost-to-connect-all-points/)
+    - Topological Sort
+        - [Course Schedule](https://leetcode-cn.com/problems/course-schedule-ii/)
 - Random
     - [Randomized Set](https://leetcode-cn.com/problems/insert-delete-getrandom-o1/)
     - [Randomized Collection](https://leetcode-cn.com/problems/insert-delete-getrandom-o1-duplicates-allowed/)
