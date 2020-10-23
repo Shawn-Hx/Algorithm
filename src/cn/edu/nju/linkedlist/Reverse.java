@@ -22,17 +22,14 @@ public class Reverse {
      * 循环实现
      */
     private static ListNode reverseWithoutRecursion(ListNode head) {
-        if (head == null)
-            return head;
-        ListNode last = null, next = head.next;
-        while (next != null) {
-            head.next = last;
-            last = head;
-            head = next;
-            next = next.next;
+        ListNode cur = head, pre = null;
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
         }
-        head.next = last;
-        return head;
+        return pre;
     }
 
     public static void main(String[] args) {
