@@ -40,8 +40,8 @@ public class RandomizedCollection {
 
         values.set(index, last);
         indices.remove(index);
-        indicesMap.get(last).remove(values.size() - 1);
         indicesMap.get(last).add(index);
+        indicesMap.get(last).remove(values.size() - 1);
         values.remove(values.size() - 1);
         return true;
     }
